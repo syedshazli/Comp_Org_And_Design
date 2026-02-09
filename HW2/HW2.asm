@@ -7,5 +7,6 @@ sum:
   addi $t0, $t0, $zero
   addi $s0, $s0, $zero
 
-# TODO: save on the stock
+# TODO: save result on the stock
+  addi $sp, $sp, 8 # restore stack pointer
   jr $ra # jump to return address
