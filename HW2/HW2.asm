@@ -7,7 +7,8 @@ sum:
   addi $t0, $t0, $zero
   addi $s0, $s0, $zero
 
-# TODO: save result on the stock
+
+  add $v0, $t0, $zero # store return type sum in return value register
   lw $t0, 4($sp) # restore registers to previous values
   lw $s0, 0($sp) # restore registers to previous values
   addi $sp, $sp, 8 # restore stack pointer
