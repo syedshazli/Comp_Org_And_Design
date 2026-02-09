@@ -8,5 +8,7 @@ sum:
   addi $s0, $s0, $zero
 
 # TODO: save result on the stock
+  lw $t0, 4($sp) # restore registers to previous values
+  lw $s0, 0($sp) # restore registers to previous values
   addi $sp, $sp, 8 # restore stack pointer
   jr $ra # jump to return address
