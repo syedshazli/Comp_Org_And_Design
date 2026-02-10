@@ -14,7 +14,7 @@ loop:
   add $t1, $t1, $t1 # indexing for accessing a[i]
   add $t1, $t1, $a0 # access address of a[i]
   lw $t2, 0($t1) # load a[i] in temp reg l2
-  add $a1, $a1, $t2 # sum = sum + a[i]
+  add $s0, $s0, $t2 # sum = sum + a[i]
   be $t0, $a1, exit # exit if i == n
   add $t0, $t0, 1 # increment i if not equal
   j loop # i != n, jump back to the loop
