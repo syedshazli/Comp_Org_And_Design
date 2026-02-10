@@ -4,8 +4,8 @@ sum:
   sw $t0, 4($sp) # save register $t0 for use afterwards (For sum)
   sw $s0, 0($sp) # save register $s0 for use afterwards (for i)
 
-  addi $t0, $t0, $zero # initialize i to 0
-  addi $s0, $s0, $zero # initialize sum to 0
+  addi $t0, $zero, $zero # initialize i to 0
+  addi $s0, $zero, $zero # initialize sum to 0
 
   j loop # go to the loop unconditionally
 
@@ -15,7 +15,7 @@ loop:
   add $t1, $t1, $a0 # access address of a[i]
   lw $t2, 0($t1) # load a[i] in temp reg l2
   add $a1, $a1, $t2 # sum = sum + a[i]
-  be $t2, $a1, exit # exit if i == n
+  be $t0, $a1, exit # exit if i == n
   add $t0, $t0, 1 # increment i if not equal
   j loop # i != n, jump back to the loop
 
