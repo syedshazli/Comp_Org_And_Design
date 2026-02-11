@@ -6,10 +6,14 @@ clear:
 # a combination of set if less than and beq
 ble:
   slti $t1, $t3, $t5
+  beq $t3, $t5, Label
   beq $t1, 1, Label
 
-# if t3 was not less than 5, t1 was not set to 1, so if t1 is not equal to 1, jump to the label
-# TODO: we know it follows greater than, but what about equal to? Same not for above
 bgt:
   slti $t1, $t3, $t5
+  bne $t1, 1, Label
+
+bgt:
+  slti $t1, $t3, $t5
+  beq $t3, $t5, Label # adheres to the or equal to case
   bne $t1, 1, Label
