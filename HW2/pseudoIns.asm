@@ -10,7 +10,8 @@ ble:
 
 bgt:
   slt $t1, $t3, $t5 # if t3 is greater than t5, then $t1 is set to 0.
-  bne $t1, 1, Label # 0 != 1, branch!
+  addi $t2, $zero, 1 # set a register to 1
+  bne $t1, $t2, Label # 0 != 1, branch!
 
 bge: # want to check if t5 >= t3
   slt $t1, $t5, $t3 # is t5 less than t3? if so, set $t1 to 1
