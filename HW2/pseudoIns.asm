@@ -16,3 +16,14 @@ bgt:
 bge: # want to check if t5 >= t3
   slt $t1, $t5, $t3 # is t5 less than t3? if so, set $t1 to 1
   beq $t1, 0, Label # if t5 was not less than t3 ($t1 set to 0), then t5 was greater than or equal to t3. branch!
+
+# BEQ FOR SMALL CONSTANT
+beq:
+  addi $t3, $zero, small # small is a constant
+  beq $t3, $t1, Label
+
+# BEQ FOR LARGE CONSTANT
+beq:
+  lui $t3, BIG # UPPER 16 BITS OF BIG
+  ori $t3, BIG # LOWER 16 BITS OF BIG
+  beq $t1, $t3, Label
