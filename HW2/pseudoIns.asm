@@ -5,15 +5,13 @@ clear:
 # branch if less than
 # a combination of set if less than and beq
 ble:
-  slti $t1, $t3, $t5
-  beq $t3, $t5, Label
-  beq $t1, 1, Label
+  slt $t1, $t5, $t3
+  beq $t1, $zero, Label # if t5 was not less than t3, then t5 >= t3, branch
 
 bgt:
-  slti $t1, $t3, $t5
-  bne $t1, 1, Label
+  slt $t1, $t3, $t5 # if t3 is greater than t5, then $t1 is set to 0.
+  bne $t1, 1, Label # 0 != 1, branch!
 
-bgt:
-  slti $t1, $t3, $t5
-  beq $t3, $t5, Label # adheres to the or equal to case
-  bne $t1, 1, Label
+bge: # want to check if t5 >= t3
+  slt $t1, $t5, $t3 # is t5 less than t3? if so, set $t1 to 1
+  beq $t1, 0, Label # if t5 was not less than t3 ($t1 set to 0), then t5 was greater than or equal to t3. branch!
