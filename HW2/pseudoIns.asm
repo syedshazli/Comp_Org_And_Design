@@ -27,3 +27,15 @@ beq:
   lui $t3, BIG # UPPER 16 BITS OF BIG
   ori $t3, BIG # LOWER 16 BITS OF BIG
   beq $t1, $t3, Label
+
+# LI SMALL
+li:
+
+# LI BIG
+li:
+
+# ADDI BIG
+addi:
+
+# LW BIG
+lw:
