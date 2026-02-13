@@ -45,8 +45,7 @@ addi:
 
 # LW BIG
 lw:
-  lui $t3, BIG # load the lower part of constant into $t3
-  add $t0, $t2, $t3 # add the lower part into $t0 
-  ori $t3, BIG $ load the lower part of $t3 into 
-  add $t0, $t2, $t3 # add upper part of $t3
-  lw $t5, 0($t0)
+  lui $t4, BIG # load the lower part of constant into $t4
+  ori $t4, BIG $ load the lower part of $t4 into 
+  add $t4, $t2, $t4 # add upper part of $t3
+  lw $t5, 0($t4)
