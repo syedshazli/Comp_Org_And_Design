@@ -30,6 +30,7 @@ beq:
 
 # LI SMALL
 li:
+  add $t1, $zero, small
 
 # LI BIG
 li:
