@@ -5,28 +5,27 @@ clear:
 # branch if less than
 # a combination of set if less than and beq
 ble:
-  slt $t1, $t5, $t3
-  beq $t1, $zero, Label # if t5 was not less than t3, then t5 >= t3, branch
+  slt $at, $t5, $t3
+  beq $at, $zero, Label # if t5 was not less than t3, then t5 >= t3, branch
 
 bgt:
-  slt $t1, $t3, $t5 # if t3 is greater than t5, then $t1 is set to 0.
-  addi $t2, $zero, 1 # set a register to 1
-  bne $t1, $t2, Label # 0 != 1, branch!
+  slt $at, $t3, $t5 # if t3 is greater than t5, then $t1 is set to 0.
+  bne $at, 1, Label # 0 != 1, branch!
 
 bge: # want to check if t5 >= t3
-  slt $t1, $t5, $t3 # is t5 less than t3? if so, set $t1 to 1
-  beq $t1, 0, Label # if t5 was not less than t3 ($t1 set to 0), then t5 was greater than or equal to t3. branch!
+  slt $at, $t5, $t3 # is t5 less than t3? if so, set $t1 to 1
+  beq $at, 0, Label # if t5 was not less than t3 ($t1 set to 0), then t5 was greater than or equal to t3. branch!
 
 # BEQ FOR SMALL CONSTANT
 beq:
-  addi $t3, $zero, small # small is a constant
-  beq $t3, $t1, Label
+  addi $at, $zero, small # small is a constant
+  beq $at, $t1, Label
 
 # BEQ FOR LARGE CONSTANT
 beq:
-  lui $t3, BIG # UPPER 16 BITS OF BIG
-  ori $t3, BIG # LOWER 16 BITS OF BIG
-  beq $t1, $t3, Label
+  lui $at, BIG_UPPER_16 # UPPER 16 BITS OF BIG
+  ori $at, BIG_LOWER_16 # LOWER 16 BITS OF BIG
+  beq $t1, $at, Label
 
 # LI SMALL
 li:
@@ -45,7 +44,7 @@ addi:
 
 # LW BIG
 lw:
-  lui $t4, BIG # load the lower part of constant into $t4
-  ori $t4, BIG $ load the lower part of $t4 into 
-  add $t4, $t2, $t4 # add upper part of $t3
-  lw $t5, 0($t4)
+  lui $at, BIG_UPPER_16 # load the upper part of constant into $t4
+  ori $at, BIG_LOWER_16 $ load the lower part of $t4 into 
+  add $at, $t2, $at # add upper part of $t3
+  lw $t5, 0($at)
