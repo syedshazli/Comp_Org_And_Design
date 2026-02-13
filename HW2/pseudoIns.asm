@@ -30,13 +30,23 @@ beq:
 
 # LI SMALL
 li:
-  add $t1, $zero, small
+  addi $t1, $zero, small # we can use add since the immediate is under 2^16
 
 # LI BIG
 li:
-
+  lui $t2, BIG # UPPER 16 BITS OF BIG
+  ori $t2, BIG # LOWER 16 BITS OF BIG
+  
 # ADDI BIG
 addi:
+  lui $t0, BIG # UPPER 16 BITS OF BIG
+  ori $t0, BIG # LOWER 16 BITS OF BIG
+  add $t0, $t0, $t2
 
 # LW BIG
 lw:
+  lui $t3, BIG # load the lower part of constant into $t3
+  add $t0, $t2, $t3 # add the lower part into $t0 
+  ori $t3, BIG $ load the lower part of $t3 into 
+  add $t0, $t2, $t3 # add upper part of $t3
+  lw $t5, 0($t0)
