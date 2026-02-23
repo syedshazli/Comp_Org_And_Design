@@ -45,6 +45,6 @@ addi:
 # LW BIG
 lw:
   lui $at, BIG_UPPER_16 # load the upper part of constant into $t4
-  ori $at, $at, BIG_LOWER_16 $ load the lower part of $t4 into 
+  ori $at, $at, BIG_LOWER_16 # load the lower part of $t4 into 
   add $at, $t2, $at # add upper part of $t3
   lw $t5, 0($at)
